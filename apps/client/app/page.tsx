@@ -1,10 +1,11 @@
 
-import SideBar from "@repo/ui/SideBar";
+import HomePage from "@repo/ui/HomePage";
+
 
 export default function Home() {
   return (
     <>
-    <SideBar/>
+    <HomePage/>
     </>
   )
 }
