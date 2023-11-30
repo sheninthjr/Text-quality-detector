@@ -1,34 +1,30 @@
-'use client';
-import React, { useState } from 'react';
-import axios from 'axios';
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
 
 const HomePage = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [prediction, setPrediction] = useState('');
-  const [sentimentScore, setSentimentScore] = useState('');
+  const [inputValue, setInputValue] = useState("");
+  const [prediction, setPrediction] = useState("");
+  const [sentimentScore, setSentimentScore] = useState("");
 
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
   };
 
-  const handleKeyPress = (e:any) => {
-    if (e.key === 'Enter') {
+  const handleKeyPress = (e: any) => {
+    if (e.key === "Enter") {
       sendText();
     }
   };
 
-  const sendText = () => {
-    if (inputValue.trim() !== '') {
-      axios
-        .post('http://localhost:3003/predict_quality', { text: inputValue })
-        .then((response) => {
-          setPrediction(response.data.prediction);
-          setSentimentScore(response.data.sentiment_score);
-        })
-        .catch((error) => console.error('Error predicting quality:', error));
+  const sendText = async() => {
+    if (inputValue.trim() !== "") {
+       const  data = await axios.post("http://localhost:3003/predict", { text: inputValue })
+      console.log(data.data.average_rate)
+       setPrediction(data.data.average_rate)
     } else {
-      setPrediction('');
-      setSentimentScore('');
+      setPrediction("");
+      setSentimentScore("");
     }
   };
 
@@ -49,7 +45,6 @@ const HomePage = () => {
           {prediction && (
             <div>
               <p>Prediction: {prediction}</p>
-              <p>Sentiment Score: {sentimentScore}</p>
             </div>
           )}
         </div>
