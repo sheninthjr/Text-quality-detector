@@ -1,8 +1,8 @@
 import React from "react";
 
-const Box = ({ predictionRate }: any) => {
+const PredictionBox = ({ predictionRate }: any) => {
   const getBackgroundColor = () => {
-    const rate = parseFloat(predictionRate);
+    const rate = parseInt(predictionRate);
     if (rate >= 10 && rate <= 30) {
       return "text-red-800";
     } else if (rate >= 31 && rate <= 60) {
@@ -16,7 +16,7 @@ const Box = ({ predictionRate }: any) => {
     }
   };
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+    <div className="flex justify-center space-x-4">
       <div className="border-2 border-gray-400 p-4 m-4 rounded-md">
         <h2 className="text-lg font-bold">Prediction Rate</h2>
         <p className={`text-xl rounded-lg text-center ${getBackgroundColor()}`}>
@@ -27,4 +27,4 @@ const Box = ({ predictionRate }: any) => {
   );
 };
 
-export default Box;
+export default PredictionBox;

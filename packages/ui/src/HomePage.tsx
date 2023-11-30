@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
-import Box from "./Box";
+import PredictionBox from "./PredictionBox";
+import GrammarCorrectionBox from "./GrammarCorrectionBox";
 
 const HomePage = () => {
   const [inputValue, setInputValue] = useState("");
   const [prediction, setPrediction] = useState("");
-  const [sentimentScore, setSentimentScore] = useState("");
-
+  const [correct, setCorrect] = useState("");
   const handleInputChange = (e: any) => {
     setInputValue(e.target.value);
   };
@@ -23,11 +23,14 @@ const HomePage = () => {
       const data = await axios.post("http://localhost:3003/predict", {
         text: inputValue,
       });
-      console.log(data.data.average_rate);
+      const gData = await axios.post("http://localhost:3003/correct-text", {
+        text: inputValue,
+      });
       setPrediction(data.data.average_rate);
+      setCorrect(gData.data.response.corrected);
     } else {
       setPrediction("");
-      setSentimentScore("");
+      setCorrect("");
     }
   };
 
@@ -46,7 +49,18 @@ const HomePage = () => {
         </div>
         <div></div>
       </div>
-      <div>{prediction && <Box predictionRate={prediction} />}</div>
+      <div className="flex justify-center justify-items-center mt-20">
+        {prediction && (
+          <div className=" flex flex-col justify-center p-4 border-2 border-indigo-400 w-1/2">
+            <div>
+              {prediction && <PredictionBox predictionRate={prediction} />}
+            </div>
+            <div>
+              {correct && <GrammarCorrectionBox correctData={correct} />}
+            </div>
+          </div>
+        )}
+      </div>
     </>
   );
 };
