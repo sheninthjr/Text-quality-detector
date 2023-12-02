@@ -1,15 +1,19 @@
 import pandas as pd
 from flask import Flask, request , jsonify
 from flask_cors import CORS
+import os
+from dotenv import load_dotenv
 import requests
 from sklearn.linear_model import LinearRegression
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.pipeline import make_pipeline
 
 app = Flask(__name__)
+load_dotenv()
 CORS(app)
 
 df = pd.read_csv('./text-quality.csv')
+api_key = os.getenv('RapidApi_key')
 
 texts = df['words'].tolist()
 rates = df['rates'].tolist()
@@ -41,11 +45,12 @@ def predict():
 
 @app.route('/correct-text', methods=['POST'])
 def correct_text():
+    print(api_key)
     url = "https://textgears-textgears-v1.p.rapidapi.com/correct"
     payload = request.json
     headers = {
         "content-type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": "ee62be61efmshc958358ab3ee3c4p102b79jsn1de9fd164bca",
+        "X-RapidAPI-Key": api_key,
         "X-RapidAPI-Host": "textgears-textgears-v1.p.rapidapi.com"
     }
     try:

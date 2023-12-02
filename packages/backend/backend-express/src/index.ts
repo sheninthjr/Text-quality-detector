@@ -20,7 +20,6 @@ app.get("/meaning/:word", async (req: Request, res: Response) => {
       "X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com",
     },
   };
-
   try {
     const response: AxiosResponse = await axios.request(options);
     res.json(response.data);
@@ -29,6 +28,7 @@ app.get("/meaning/:word", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

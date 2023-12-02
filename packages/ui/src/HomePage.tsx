@@ -49,17 +49,25 @@ const HomePage = () => {
         </div>
         <div></div>
       </div>
-      <div className="flex justify-center justify-items-center mt-20">
-        {prediction && (
-          <div className=" flex flex-col justify-center p-4 border-2 border-indigo-400 w-1/2">
-            <div>
-              {prediction && <PredictionBox predictionRate={prediction} />}
+      <div className="flex flex-grow justify-center space-x-4">
+        <div className="flex justify-center justify-items-center mt-20">
+          {prediction && (
+            <div className=" flex flex-col justify-center p-4 border-2 bg-white rounded-xl border-black">
+              <div>
+                {prediction && <PredictionBox predictionRate={prediction} />}
+              </div>
             </div>
-            <div>
-              {correct && <GrammarCorrectionBox correctData={correct} />}
+          )}
+        </div>
+        <div className="flex justify-center justify-items-center mt-20">
+          {prediction && (
+            <div className=" flex flex-col justify-center p-4 border-2 bg-white rounded-xl border-black">
+              <div>
+                {correct && <GrammarCorrectionBox correctData={correct} />}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );
