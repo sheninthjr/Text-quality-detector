@@ -19,7 +19,7 @@ const PredictionBox = ({ predictionRate }: any) => {
     <div className="flex justify-center space-x-4">
       <div className="border-2 border-gray-400 p-4 m-4 rounded-md">
         <h2 className="text-lg font-bold text-black">Prediction Rate</h2>
-        <p className={`text-xl rounded-lg text-center text-white ${getBackgroundColor()}`}>
+        <p className={`text-xl rounded-lg pl-2 pr-2 text-center text-white ${getBackgroundColor()}`}>
           {predictionRate}
         </p>
       </div>

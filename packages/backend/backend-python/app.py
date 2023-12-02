@@ -45,7 +45,6 @@ def predict():
 
 @app.route('/correct-text', methods=['POST'])
 def correct_text():
-    print(api_key)
     url = "https://textgears-textgears-v1.p.rapidapi.com/correct"
     payload = request.json
     headers = {

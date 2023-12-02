@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import PredictionBox from "./PredictionBox";
 import GrammarCorrectionBox from "./GrammarCorrectionBox";
@@ -37,7 +37,7 @@ const HomePage = () => {
   return (
     <>
       <div className="flex justify-center fixed bottom-0 left-0 w-full p-4 h-20">
-        <div className="relative w-1/2">
+        <div className="relative md-w-1/2 lg-w-1/2 xl:w-1/2">
           <input
             type="text"
             value={inputValue}
@@ -47,21 +47,20 @@ const HomePage = () => {
             className="w-full text-lg text-white bg-slate-800 font-medium rounded-2xl px-4 py-2 focus:outline-none border-2 border-slate-500 focus:border-slate-500 pr-12"
           />
         </div>
-        <div></div>
       </div>
-      <div className="flex flex-grow justify-center space-x-4">
-        <div className="flex justify-center justify-items-center mt-20">
+      <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row bg-slate-900 h-screen justify-center space-x-4">
+        <div className="flex justify-center justify-items-center md:mt-20">
           {prediction && (
-            <div className=" flex flex-col justify-center p-4 border-2 bg-white rounded-xl border-black">
+            <div className=" flex flex-col justify-center p-4 h-fit border-2 bg-white rounded-xl border-black">
               <div>
                 {prediction && <PredictionBox predictionRate={prediction} />}
               </div>
             </div>
           )}
         </div>
-        <div className="flex justify-center justify-items-center mt-20">
+        <div className="flex justify-center justify-items-center mt-10 md:mt-20 lg:mt-20">
           {prediction && (
-            <div className=" flex flex-col justify-center p-4 border-2 bg-white rounded-xl border-black">
+            <div className=" flex flex-col justify-center p-4 h-fit border-2 bg-white rounded-xl border-black">
               <div>
                 {correct && <GrammarCorrectionBox correctData={correct} />}
               </div>
