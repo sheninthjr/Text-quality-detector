@@ -7,7 +7,8 @@
     "./code": "./src/code.tsx",
     "./HomePage": "./src/HomePage.tsx",
     "./SideBar": "./src/SideBar.tsx",
-    "./NavBar": "./src/NavBar.tsx"
+    "./NavBar": "./src/NavBar.tsx",
+    "./Synonyms": "./src/Synonyms.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

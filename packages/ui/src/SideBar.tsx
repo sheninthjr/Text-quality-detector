@@ -1,13 +1,10 @@
 import React from "react";
 
-const SideBar = ({ isSidebarOpen }: any) => {
-  const sidebarWidthClasses = isSidebarOpen
-    ? "md:w-1/6 lg:w-1/6 xl:w-1/6"
-    : "hidden md:w-1/6 lg:w-1/6 xl:w-1/6";
-
+const SideBar = () => {
+  
   return (
     <div
-      className={`bg-slate-950 text-white fixed h-full p-4 ${sidebarWidthClasses}`}
+      className={`hidden sm:block bg-slate-950 text-white fixed h-full p-4 md:w-1/6 lg:w-1/6 xl:w-1/6`}
     >
       <div className="text-lg font-medium pt-16">Dashboard</div>
       <div className="pt-20 font-medium font-serif text-xl">

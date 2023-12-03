@@ -1,13 +1,14 @@
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import axios, { AxiosResponse } from "axios";
+import cors from "cors"
 require("dotenv").config();
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(bodyParser.json());
-
+app.use(cors())
 const apiKey = process.env.WORDS_API_KEY;
 
 app.get("/meaning/:word", async (req: Request, res: Response) => {
